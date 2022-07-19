@@ -24,10 +24,10 @@ print("Hello")
 #from astropy.io import fits
 #fits_image_filename = fits.util.get_testdata_filepath('frame-g-004670-5-0113.fits')
 #hdul = fits.open(fits_image_filename)
-#hdul.info()
+#hdul.info() 
 
-"""from astropy import coordinates as coords
+from astropy import coordinates as coords
 from astroquery.sdss import SDSS
 co = coords.SkyCoord('0h8m05.63s +14d50m23.3s')
 result = SDSS.query_region(co)
-imgs = SDSS.get_images(matches=result)"""
+imgs = SDSS.get_images(matches=result)
