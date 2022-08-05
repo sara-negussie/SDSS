@@ -34,3 +34,29 @@ result_table = Simbad.query_region("m81", radius=0.1 * u.deg)
 # another way to specify the radius.
 result_table = Simbad.query_region("m81", radius='0d6m0s')
 print(result_table)
+
+
+"""
+
+
+SELECT
+   m.ra AS ra1, m.dec AS dec1,
+   n.objid, n.distance,
+   o.ra AS ra2, o.dec AS dec2
+FROM MyDB.MyRAandDEC AS m
+   CROSS APPLY dbo.fGetNearestObjEq( m.ra, m.dec, 0.5) AS n
+   JOIN PhotoObj AS o ON n.objid=o.objid
+
+
+"""
+
+
+"""
+SELECT
+   m.ra AS ra1, m.dec AS dec1,
+   n.objid, n.distance, n.modelMag_g, n.modelMag_r, n.modelMag_i, n.cModelMag_g, n.cModelMag_r, n.cModelMag_i, n.petroMag_g, n.petroMag_r, n.petroMag_i, n.petroRad_g, n.petroRad_r, n.petroRad_i, 
+   o.ra AS ra2, o.dec AS dec2
+FROM MyDB.MyRAandDEC AS m
+   CROSS APPLY dbo.fGetNearestObjEq( m.ra, m.dec, 0.5) AS n
+   JOIN PhotoObj AS o ON n.objid=o.objid
+"""
